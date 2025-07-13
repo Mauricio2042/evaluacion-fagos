@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación: Terapia con Fagos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Modal de Registro de Estudiante -->
+    <div id="registration-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Registro para la Evaluación</h2>
+            <p>Por favor, ingresa tus datos para comenzar.</p>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="fullName">Nombre Completo</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar Evaluación</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contenedor Principal de la Aplicación -->
+    <div id="app-container" class="container" style="display: none;">
+        <header>
+            <h1>Evaluación Sumativa: Terapia con Fagos</h1>
+            <p class="subtitle">Basado en "Phage Therapy in the Postantibiotic Era" (Gordillo Altamirano & Barr, 2019)</p>
+        </header>
+
+        <!-- Nivel 1: Recordar -->
+        <section id="level-1" class="bloom-level">
+            <h2>Nivel 1: Recordar (3 Puntos)</h2>
+            <p>Arrastra los eventos clave a su posición correcta en la línea de tiempo (basado en la Fig. 1 del artículo).</p>
+            <div class="timeline-container">
+                <div id="events-source" class="events-pool">
+                    <div class="event" draggable="true" data-year="1917">Descubrimiento de fagos (d'Herelle)</div>
+                    <div class="event" draggable="true" data-year="1940">Introducción de la Penicilina</div>
+                    <div class="event" draggable="true" data-year="2016">1er ensayo clínico de Fase I/II (PhagoBurn)</div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-entry">
+                        <div class="timeline-year">1917</div>
+                        <div class="drop-zone" data-year="1917"></div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-year">1940s</div>
+                        <div class="drop-zone" data-year="1940"></div>
+                    </div>
+                    <div class="timeline-entry">
+                        <div class="timeline-year">2016</div>
+                        <div class="drop-zone" data-year="2016"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nivel 2: Comprender -->
+        <section id="level-2" class="bloom-level">
+            <h2>Nivel 2: Comprender</h2>
+            <p>Basado en el artículo, explica con tus propias palabras dos razones principales por las que la terapia con fagos experimentó un 'renacimiento' (rebirth) frente a la crisis de resistencia a los antibióticos.</p>
+            <textarea id="comprender-answer" rows="5" placeholder="Escribe tu explicación aquí..."></textarea>
+        </section>
+
+        <!-- Nivel 3: Aplicar -->
+        <section id="level-3" class="bloom-level">
+            <h2>Nivel 3: Aplicar (5 Puntos)</h2>
+            <p><strong>Caso de Estudio:</strong> Un paciente de 68 años con pancreatitis necrotizante desarrolla una infección por <em>Acinetobacter baumannii</em> multirresistente (MDR) que no responde a los antibióticos. Según los casos de estudio exitosos descritos en el artículo, ¿cuál sería la estrategia terapéutica con fagos más adecuada a seguir?</p>
+            <div class="mcq-options">
+                <label><input type="radio" name="aplicar-question" value="a"> a) Monoterapia con un solo fago.</label>
+                <label><input type="radio" name="aplicar-question" value="b"> b) Administración de un cóctel de fagos preestablecido como PYO.</label>
+                <label><input type="radio" name="aplicar-question" value="c"> c) Uso de un cóctel personalizado basado en pruebas de susceptibilidad de la cepa del paciente en librerías de fagos.</label>
+                <label><input type="radio" name="aplicar-question" value="d"> d) Terapia únicamente con endolisinas.</label>
+            </div>
+        </section>
+
+        <!-- Nivel 4: Analizar -->
+        <section id="level-4" class="bloom-level">
+            <h2>Nivel 4: Analizar</h2>
+            <p>El artículo describe el concepto de 'trade-offs' evolutivos en la resistencia a fagos. Analiza la relación descrita por Chan et al. (2016). ¿Qué mecanismo molecular específico explica cómo la resistencia al fago OMKO1 puede llevar a la resensibilización a los antibióticos en <em>P. aeruginosa</em>?</p>
+            <textarea id="analizar-answer" rows="5" placeholder="Describe el mecanismo molecular..."></textarea>
+        </section>
+
+        <!-- Nivel 5: Evaluar -->
+        <section id="level-5" class="bloom-level">
+            <h2>Nivel 5: Evaluar</h2>
+            <p>Evalúa críticamente el ensayo clínico PhagoBurn. Basándote en las explicaciones de los autores sobre sus resultados decepcionantes, propón y justifica dos cambios metodológicos específicos que implementarías en un futuro ensayo para mejorar su eficacia.</p>
+            <textarea id="evaluar-answer" rows="5" placeholder="Propón y justifica dos cambios metodológicos..."></textarea>
+        </section>
+        
+        <!-- Nivel 6: Crear -->
+        <section id="level-6" class="bloom-level">
+            <h2>Nivel 6: Crear</h2>
+            <p>Imagina que eres un investigador que debe solicitar financiación para desarrollar una terapia fágica. Usando la evidencia del artículo sobre la sinergia fago-antibiótico (PAS) y las endolisinas bioingenierizadas (artilisinas), escribe un 'discurso de ascensor' (elevator pitch) de máximo 150 palabras para convencer a un panel de inversores.</p>
+            <textarea id="crear-answer" maxlength="800" rows="6" placeholder="Escribe tu 'elevator pitch' aquí... (máx. ~150 palabras)"></textarea>
+        </section>
+
+        <button id="submit-evaluation" class="btn btn-primary btn-large">Finalizar y Enviar Evaluación</button>
+    </div>
+
+    <!-- Pantalla de Resultados -->
+    <div id="results-screen" class="container" style="display: none;">
+        <div class="results-content">
+            <h2>Resultados de la Evaluación</h2>
+            <div class="score-display">
+                <div class="score-item">
+                    <span class="score-label">Nota Cuantitativa</span>
+                    <span id="quantitative-score" class="score-value">--</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Valoración Cualitativa</span>
+                    <span id="qualitative-score" class="score-value">--</span>
+                </div>
+            </div>
+            <p id="feedback-message" class="feedback"></p>
+            <div class="complementary-activities">
+                <h3>Actividades Complementarias</h3>
+                <ul>
+                    <li><a href="https://www.youtube.com/watch?v=YI3tsmFsrOg" target="_blank">Video: ¿Qué son los Bacteriófagos?</a></li>
+                    <li><a href="https://www.nature.com/articles/s41579-019-0287-9" target="_blank">Artículo: Para profundizar en la bioingeniería de fagos</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/F%C3%A9lix_d%27H%C3%A9relle" target="_blank">Biografía: Conoce a Félix d'Herelle</a></li>
+                </ul>
+            </div>
+            <p class="confirmation-message">Tus respuestas han sido enviadas correctamente. Puedes cerrar esta ventana.</p>
+        </div>
+    </div>
+    
+    <!-- Overlay de Carga -->
+    <div id="loading-overlay" class="modal-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
